@@ -45,6 +45,7 @@ Function Search-RechtspraakNatuurlijkPersoon
         
         [Parameter(ParameterSetName="Method1", Mandatory=$true)]
         [Parameter(ParameterSetName="Method3", Mandatory=$true)]
+        [Parameter(ParameterSetName="Method4", Mandatory=$true)]
         [String] $BirthDate,
 
         [Parameter(ParameterSetName="Method1", Mandatory=$true)]
@@ -53,6 +54,7 @@ Function Search-RechtspraakNatuurlijkPersoon
 
         [Parameter(ParameterSetName="Method1", Mandatory=$true)]
         [Parameter(ParameterSetName="Method2", Mandatory=$true)]
+        [Parameter(ParameterSetName="Method4", Mandatory=$true)]
         [String] $LastName, 
 
         [Parameter(ParameterSetName="Method2", Mandatory=$true)]
@@ -73,6 +75,7 @@ Function Search-RechtspraakNatuurlijkPersoon
         "METHOD1" { $Body = '{"model":"{\"voorvoegsel\":\"' + $Initials + '\",\"achternaam\":\"' + $LastName + '\",\"geboortedatum\":\"' + $BirthDate + '\"}"}' }
         "METHOD2" { $Body = '{"model":"{\"voorvoegsel\":\"' + $Initials + '\",\"achternaam\":\"' + $LastName + '\",\"postcode\":\"' + $Zipcode + '\",\"huisnummer\":\"' + $HouseNumber + '\"}"}' } 
         "METHOD3" { $Body = '{"model":"{\"geboortedatum\":\"' + $BirthDate + '\",\"postcode\":\"' + $Zipcode + '\",\"huisnummer\":\"' + $HouseNumber + '\"}"}' }
+        "METHOD4" { $Body = '{"model":"{\"geboortedatum\":\"' + $BirthDate + '\",\"achternaam\":\"' + $LastName + '\"}"}' }
     }
 
     $WebSession = New-Object Microsoft.PowerShell.Commands.WebRequestSession
